@@ -23,7 +23,7 @@ type AuthContextType = {
     user: User | null;
     email: string | null;
     loading?: boolean;
-    signOut: (a: SignOutParams<false>) => Promise<void>;
+    signOut: (a: SignOutParams) => Promise<void>;
     signIn: (
         provider: LiteralUnion<BuiltInProviderType>,
         options: SignInOptions,
@@ -35,7 +35,7 @@ const AuthContext = createContext<AuthContextType>({
     user: null,
     email: '',
     loading: true,
-    signOut: async (a: SignOutParams<false>) => {
+    signOut: async (a: SignOutParams) => {
         return signOut();
     },
     signIn: async (
@@ -62,7 +62,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         queryFn: () => getSession(),
     });
 
-    const newSignOut = async (a: SignOutParams<false>) => {
+    const newSignOut = async (a: SignOutParams) => {
         try {
             const response = await signOut(a);
             refetch();
