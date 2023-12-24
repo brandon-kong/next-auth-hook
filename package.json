@@ -1,6 +1,6 @@
 {
     "name": "next-auth-hook",
-    "version": "0.0.2-alpha",
+    "version": "0.0.3-alpha",
     "description": "A simple React hook for NextAuth.js with Next.js App Router",
     "main": "dist/index.js",
     "repository": "https://github.com/brandon-kong/next-auth-hook",
