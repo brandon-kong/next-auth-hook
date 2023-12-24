@@ -91,7 +91,7 @@ See the [official documentation](https://next-auth.js.org/getting-started/client
 
 ### License
 
-MIT © [brandon-kong](/LICENSE)
+ISC © [brandon-kong](/LICENSE)
 
 ### Acknowledgements
 
