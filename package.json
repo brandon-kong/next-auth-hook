@@ -1,6 +1,6 @@
 {
     "name": "next-auth-hook",
-    "version": "0.0.1-alpha",
+    "version": "0.0.2-alpha",
     "description": "A Next.js hook for next-auth for the new Next.js App Router, allowing for instant renders for session changes. ",
     "main": "dist/index.js",
     "repository": "https://github.com/brandon-kong/next-auth-hook",
