@@ -1,8 +1,13 @@
-export type {
+import React from 'react';
+import type {
     AuthProviderProps,
     AuthContextType,
 } from './providers/auth-context';
 
-export type {
-    QueryProviderProps
-} from './providers/query-provider';
+export declare function useSession(): AuthContextType;
+export declare const AuthContext: React.Context<AuthContextType>;
+export declare const AuthProvider: (
+    props: AuthProviderProps,
+) => JSX.Element;
+
+export * from './providers/query-provider';
