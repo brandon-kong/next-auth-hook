@@ -53,7 +53,7 @@ const AuthContext = createContext<AuthContextType>({
 const useSession = () => useContext(AuthContext);
 
 type AuthProviderProps = {
-    children: React.ReactNode;
+    children?: React.ReactNode;
 };
 
 const AuthProvider = ({ children }: AuthProviderProps) => {

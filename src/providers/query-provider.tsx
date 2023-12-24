@@ -6,14 +6,17 @@ import {
 } from '@tanstack/react-query';
 
 type QueryProviderProps = {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     client?: QueryClient;
 };
 
 const QueryProvider = ({
     children,
-    client = new QueryClient(),
+    client,
 }: QueryProviderProps) => {
+    if (!client) {
+        client = new QueryClient();
+    }
     return (
         <QueryClientProvider client={client}>
             {children}
