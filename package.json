@@ -12,7 +12,7 @@
         "format-check": "npx prettier --check \"src/**/*.{ts,tsx}\""
     },
     "author": "Brandon Kong",
-    "license": "MIT",
+    "license": "ISC",
     "keywords": [
         "next",
         "nextjs",
