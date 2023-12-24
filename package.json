@@ -2,18 +2,20 @@
   "name": "next-auth-hook",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard src/**/*.ts"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.10.5",
     "@types/react": "^18.2.45",
+    "standard": "^17.1.0",
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.14.6",
     "next": "^14.0.4",
     "next-auth": "^4.24.5",
     "react": "^18.2.0"
