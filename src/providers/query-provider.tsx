@@ -5,8 +5,6 @@ import {
     QueryClientProvider,
 } from '@tanstack/react-query';
 
-const queryClient = new QueryClient();
-
 type QueryProviderProps = {
     children: React.ReactNode;
     client?: QueryClient;
@@ -14,7 +12,7 @@ type QueryProviderProps = {
 
 const QueryProvider = ({
     children,
-    client = queryClient,
+    client = new QueryClient(),
 }: QueryProviderProps) => {
     return (
         <QueryClientProvider client={client}>
@@ -24,5 +22,4 @@ const QueryProvider = ({
 };
 
 export default QueryProvider;
-export { queryClient as NextAuthHookQueryClient };
 export type { QueryProviderProps };

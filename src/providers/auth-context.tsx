@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useContext, createContext, useState } from 'react';
+import { useContext, createContext } from 'react';
 import { getSession } from 'next-auth/react';
 import { useQuery } from '@tanstack/react-query';
 
@@ -14,6 +14,8 @@ import type {
     SignInResponse,
     LiteralUnion,
 } from 'next-auth/react';
+
+import type { Session } from 'next-auth';
 
 import type { BuiltInProviderType } from 'next-auth/providers/index';
 import QueryProvider from './query-provider';
@@ -28,6 +30,7 @@ type AuthContextType = {
         provider: LiteralUnion<BuiltInProviderType>,
         options: SignInOptions,
     ) => Promise<SignInResponse | void>;
+    session?: Session | null;
 };
 
 const AuthContext = createContext<AuthContextType>({
@@ -44,6 +47,7 @@ const AuthContext = createContext<AuthContextType>({
     ) => {
         return signIn(provider, options);
     },
+    session: null,
 });
 
 const useSession = () => useContext(AuthContext);
@@ -98,6 +102,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
                     loading: status === 'pending',
                     signOut: newSignOut,
                     signIn: newSignIn,
+                    session,
                 }}
             >
                 {children}

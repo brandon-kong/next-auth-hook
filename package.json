@@ -8,8 +8,8 @@
         "build": "npx tsc",
         "publish": "npm run build && npm publish",
         "test": "ts-standard",
-        "format": "npx prettier --write \"src/**/*.{ts,tsx}\"",
-        "format-check": "npx prettier --check \"src/**/*.{ts,tsx}\""
+        "format": "npx prettier --write \"**/*.{ts,tsx,js,jsx}\"",
+        "format-check": "npx prettier --check \"**/*.{ts,tsx,js,jsx}\""
     },
     "author": "Brandon Kong",
     "license": "ISC",
