@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import { AuthProvider } from 'next-auth-hook';
+import Providers from '@/components/providers';
+
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,10 +20,11 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <AuthProvider>
-                    {children}
-                </AuthProvider>
-                
+                <Providers>
+                        {children}
+                    <ReactQueryDevtools initialIsOpen={false} />
+                </Providers>
+
             </body>
         </html>
     );

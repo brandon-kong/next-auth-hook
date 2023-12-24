@@ -10,6 +10,7 @@ type QueryProviderProps = {
     client?: QueryClient;
 };
 
+
 const QueryProvider = ({
     children,
     client,
@@ -17,6 +18,7 @@ const QueryProvider = ({
     if (!client) {
         client = new QueryClient();
     }
+
     return (
         <QueryClientProvider client={client}>
             {children}

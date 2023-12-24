@@ -4,7 +4,7 @@
 
 import { useContext, createContext } from 'react';
 import { getSession } from 'next-auth/react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { signOut, signIn } from 'next-auth/react';
 import type { User } from 'next-auth';
@@ -18,7 +18,6 @@ import type {
 import type { Session } from 'next-auth';
 
 import type { BuiltInProviderType } from 'next-auth/providers/index';
-import QueryProvider from './query-provider';
 
 type AuthContextType = {
     isAuthenticated: boolean;
@@ -57,6 +56,8 @@ type AuthProviderProps = {
 };
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
+    const client = useQueryClient();
+
     const {
         data: session,
         status,
@@ -93,21 +94,19 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     };
 
     return (
-        <QueryProvider>
-            <AuthContext.Provider
-                value={{
-                    isAuthenticated: !!session,
-                    user: (session?.user as User) ?? null,
-                    email: session?.user?.email ?? null,
-                    loading: status === 'pending',
-                    signOut: newSignOut,
-                    signIn: newSignIn,
-                    session,
-                }}
-            >
-                {children}
-            </AuthContext.Provider>
-        </QueryProvider>
+        <AuthContext.Provider
+            value={{
+                isAuthenticated: !!session,
+                user: (session?.user as User) ?? null,
+                email: session?.user?.email ?? null,
+                loading: status === 'pending',
+                signOut: newSignOut,
+                signIn: newSignIn,
+                session,
+            }}
+        >
+            {children}
+        </AuthContext.Provider>
     );
 };
 
