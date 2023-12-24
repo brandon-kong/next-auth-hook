@@ -27,7 +27,7 @@ type AuthContextType = {
     signIn: (
         provider: LiteralUnion<BuiltInProviderType>,
         options: SignInOptions,
-    ) => Promise<SignInResponse | undefined>;
+    ) => Promise<SignInResponse | void>;
 };
 
 const AuthContext = createContext<AuthContextType>({
@@ -36,7 +36,7 @@ const AuthContext = createContext<AuthContextType>({
     email: '',
     loading: true,
     signOut: async (a: SignOutParams) => {
-        return signOut();
+        return signOut(a);
     },
     signIn: async (
         provider: LiteralUnion<BuiltInProviderType>,
@@ -46,7 +46,7 @@ const AuthContext = createContext<AuthContextType>({
     },
 });
 
-const useAuth = () => useContext(AuthContext);
+const useSession = () => useContext(AuthContext);
 
 type AuthProviderProps = {
     children: React.ReactNode;
@@ -107,5 +107,5 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 };
 
 export default AuthProvider;
-export { AuthContext, useAuth };
+export { AuthContext, useSession };
 export type { AuthContextType, AuthProviderProps };

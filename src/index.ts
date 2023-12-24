@@ -3,7 +3,7 @@
 export * from './providers/auth-context';
 export {
     default as AuthProvider,
-    useAuth,
+    useSession,
     AuthContext,
 } from './providers/auth-context';
 
