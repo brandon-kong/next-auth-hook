@@ -13,9 +13,10 @@
     "@tanstack/react-query-devtools": "^5.14.6",
     "next": "14.0.4",
     "next-auth": "^4.24.5",
-    "next-auth-hook": "file:../../next-auth-hook-0.0.4-alpha.tgz",
+    "next-auth-hook": "file:../../next-auth-hook-0.0.5-alpha.tgz",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "swr": "^2.2.4"
   },
   "devDependencies": {
     "@types/node": "^20",

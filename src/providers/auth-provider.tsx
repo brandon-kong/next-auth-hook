@@ -4,7 +4,7 @@
 
 import { useContext, createContext } from 'react';
 import { getSession } from 'next-auth/react';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { QueryClient, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { signOut, signIn } from 'next-auth/react';
 import type { User } from 'next-auth';
@@ -53,17 +53,21 @@ const useSession = () => useContext(AuthContext);
 
 type AuthProviderProps = {
     children?: React.ReactNode;
+    client: QueryClient;
 };
 
-const AuthProvider = ({ children }: AuthProviderProps) => {
+const AuthProvider = ({ children, client }: AuthProviderProps) => {
     const {
         data: session,
+        error,
         status,
         refetch,
     } = useQuery({
         queryKey: ['session'],
-        queryFn: () => getSession(),
-    });
+        queryFn: () => fetch('https://api.github.com/repos/TanStack/query').then(
+            (res) => res.json(),
+          ),
+    }, client);
 
     const newSignOut = async (a: SignOutParams) => {
         try {

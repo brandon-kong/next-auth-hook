@@ -1,25 +1,28 @@
 'use client';
 
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import { AuthProvider } from 'next-auth-hook';
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { AuthProvider } from '../../../../src';
 const queryClient = new QueryClient();
 
 const QueryProvider = ({ children }: any) => {
-    const a = new QueryClient();
-    return <QueryClientProvider client={a}>{children}</QueryClientProvider>;
+    return <QueryClientProvider client={queryClient}>
+        <AuthProvider
+        client={queryClient}
+        >
+            {children}
+        </AuthProvider>
+        
+        </QueryClientProvider>;
     }
 ;
 
 const Providers = ({ children }: any) => {
     return (
-        <QueryProvider>
-            <AuthProvider>
-                {children}
-            </AuthProvider>
-        </QueryProvider>
+        <AuthProvider>
+            {children}
+        </AuthProvider>
     )
 }
-
-export default QueryProvider;
 
 export { QueryProvider, Providers };

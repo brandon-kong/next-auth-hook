@@ -1,6 +1,6 @@
 {
     "name": "next-auth-hook",
-    "version": "0.0.4-alpha",
+    "version": "0.0.6-alpha",
     "description": "A simple React hook for NextAuth.js with Next.js App Router",
     "main": "dist/index.js",
     "repository": "https://github.com/brandon-kong/next-auth-hook",
@@ -36,7 +36,8 @@
         "@tanstack/react-query": "^5.14.6",
         "next": "^14.0.4",
         "next-auth": "^4.24.5",
-        "react": "^18.2.0"
+        "react": "^18.2.0",
+        "swr": "^2.2.4"
     },
     "types": "dist/index.d.ts"
 }
